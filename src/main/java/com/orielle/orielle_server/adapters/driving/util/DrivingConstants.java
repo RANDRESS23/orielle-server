@@ -9,6 +9,12 @@ public class DrivingConstants {
     public static final String DEFAULT_SIZE_PARAM = "10";
     public static final String DEFAULT_SORT_PARAM = "asc";
     public static final String DEFAULT_SORT_BY_PARAM = "name";
+    public static final String DEFAULT_CATEGORY_PARAM = "all";
+
+    public static final String DATE_FORMAT = "yyyy-MM-dd";
+    public static final String USER_ID = "userId";
+    public static final String USER_BIRTHDATE = "birthdate";
+    public static final String FORMAT_FROM_STRING_TO_LOCAL_DATE = "formatFromStringToLocalDate";
 
     public static final String HAS_ROLE_ADMIN = "hasRole('ADMIN')";
     public static final String HAS_ALL_ROLES = "hasAnyRole('ADMIN', 'CLIENTE')";
@@ -28,6 +34,10 @@ public class DrivingConstants {
     public static final String RESPONSE_CODE_400="400";
     public static final String RESPONSE_CODE_404="404";
     public static final String RESPONSE_CODE_409="409";
+    public static final String RESPONSE_CODE_503="503";
+
+    public static final String CART_ID = "cartId";
+    public static final String CART_PRODUCT_ID = "cartProductId";
 
     public static final String TAG_CATEGORY_NAME = "Category";
     public static final String TAG_CATEGORY_DESCRIPTION = "Category API";
@@ -84,4 +94,51 @@ public class DrivingConstants {
     public static final String UPDATE_PRODUCT_QUANTITY_PRODUCT_RESPONSE_201_DESCRIPTION = "Quantity Product updated successfully";
     public static final String UPDATE_PRODUCT_QUANTITY_PRODUCT_RESPONSE_400_DESCRIPTION = "Invalid input";
     public static final String UPDATE_PRODUCT_QUANTITY_PRODUCT_RESPONSE_404_DESCRIPTION = "Product not found";
+
+    public static final String TAG_CART_NAME = "Cart";
+    public static final String TAG_CART_DESCRIPTION = "Cart API";
+    public static final String SAVE_CART_PRODUCT_SUMMARY = "Save cart product";
+    public static final String SAVE_CART_PRODUCT_DESCRIPTION = "Add a new product to the cart";
+    public static final String SAVE_CART_PRODUCT_RESPONSE_201_DESCRIPTION = "Cart product saved successfully";
+    public static final String SAVE_CART_PRODUCT_RESPONSE_400_DESCRIPTION = "Invalid field";
+    public static final String SAVE_CART_PRODUCT_RESPONSE_503_DESCRIPTION = "Service unavailable";
+
+    public static final String REMOVE_CART_PRODUCT_SUMMARY = "Remove cart product";
+    public static final String REMOVE_CART_PRODUCT_DESCRIPTION = "Remove a product from the cart";
+    public static final String REMOVE_CART_PRODUCT_RESPONSE_201_DESCRIPTION = "Cart product removed successfully";
+    public static final String REMOVE_CART_PRODUCT_RESPONSE_400_DESCRIPTION = "Invalid field";
+    public static final String REMOVE_CART_PRODUCT_RESPONSE_503_DESCRIPTION = "Service unavailable";
+
+    public static final String GET_CART_PRODUCTS_SUMMARY = "Get all cart products";
+    public static final String GET_CART_PRODUCTS_DESCRIPTION = "Get all the products from the cart";
+    public static final String GET_CART_PRODUCTS_RESPONSE_200_DESCRIPTION = "Cart products successfully obtained";
+    public static final String GET_CART_PRODUCTS_RESPONSE_400_DESCRIPTION = "Bad request";
+    public static final String GET_CART_PRODUCTS_RESPONSE_503_DESCRIPTION = "Service unavailable";
+
+    public static final String MESSAGE = "message";
+    public static final String CART_PRODUCTS_BOUGHT_MESSAGE = "Products bought successfully!";
+
+    public static final String TAG_USER_NAME = "User Management";
+    public static final String TAG_USER_DESCRIPTION = "Endpoints for managing users";
+
+    public static final String SAVE_CLIENT_SUMMARY = "Register a new client";
+    public static final String SAVE_CLIENT_RESPONSE_201_DESCRIPTION = "Client has been registered";
+    public static final String SAVE_CLIENT_RESPONSE_400_DESCRIPTION = "Invalid param";
+
+    public static final String TAG_AUTH_NAME = "Authentication";
+    public static final String TAG_AUTH_DESCRIPTION = "Endpoints for user authentication";
+    public static final String LOGIN_SUMMARY = "Search if the user Exists in database and give him a token";
+    public static final String LOGIN_RESPONSE_RESPONSE_200_DESCRIPTION = "A token created with user information";
+    public static final String LOGIN_ERROR_RESPONSE_400_DESCRIPTION = "User email or password is incorrect";
+
+    public static final String TAG_ORDER_NAME = "Order";
+    public static final String TAG_ORDER_DESCRIPTION = "Order API";
+    public static final String SAVE_ORDER_SUMMARY = "Save a new order";
+    public static final String SAVE_ORDER_DESCRIPTION = "Creates a new order in the database";
+    public static final String SAVE_ORDER_RESPONSE_201_DESCRIPTION = "Order created successfully";
+    public static final String SAVE_ORDER_RESPONSE_400_DESCRIPTION = "Invalid input";
+
+    public static final String DELETE_ORDER_SUMMARY = "Delete a order";
+    public static final String DELETE_ORDER_DESCRIPTION = "Delete a order in the database";
+    public static final String DELETE_ORDER_RESPONSE_200_DESCRIPTION = "Order removed successfully";
 }
