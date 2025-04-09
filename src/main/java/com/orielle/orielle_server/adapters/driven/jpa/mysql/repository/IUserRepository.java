@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface IUserRepository extends JpaRepository<UserEntity, Long> {
-    Optional<UserEntity> findByDocument(String document);
+    Optional<UserEntity> findByDni(String dni);
     Optional<UserEntity> findByEmail(String email);
     Optional<UserEntity> findByPhone(String phone);
 

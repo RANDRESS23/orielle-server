@@ -7,10 +7,11 @@ import com.orielle.orielle_server.domain.model.CartProduct;
 import com.orielle.orielle_server.domain.model.CustomPage;
 import com.orielle.orielle_server.domain.model.Product;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ICartResponseMapper {
     CartResponse toCartResponse(Cart cart);
     CartDto toCartDto(Cart cart);

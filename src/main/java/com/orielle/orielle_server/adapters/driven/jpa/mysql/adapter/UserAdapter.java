@@ -33,7 +33,7 @@ public class UserAdapter implements IUserPersistencePort {
 
     @Override
     public Optional<User> getUserByDocument(String name) {
-        return userRepository.findByDocument(name)
+        return userRepository.findByDni(name)
                 .map(userEntity -> IUserEntityMapper.toDomainModel(userEntity, roleEntityMapper));
     }
 

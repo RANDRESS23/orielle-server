@@ -7,6 +7,8 @@ import com.orielle.orielle_server.domain.model.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.time.LocalDateTime;
+
 @Mapper(componentModel = "spring")
 public interface IProductRequestMapper {
     @Mapping(target = DrivingConstants.PRODUCT_ID, ignore = true)
@@ -18,7 +20,7 @@ public interface IProductRequestMapper {
     static Product addRequestToProduct(AddProductRequest addProductRequest) {
         Category category = new Category(
             addProductRequest.getCategoryId(),
-            null, null, null, null
+            "", "", LocalDateTime.now(), LocalDateTime.now()
         );
 
         return new Product.ProductBuilder()

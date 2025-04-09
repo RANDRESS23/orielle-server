@@ -4,12 +4,13 @@ import com.orielle.orielle_server.adapters.driven.jpa.mysql.entity.UserEntity;
 import com.orielle.orielle_server.domain.model.Role;
 import com.orielle.orielle_server.domain.model.User;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface IUserEntityMapper {
     UserEntity toEntity(User user);
 
