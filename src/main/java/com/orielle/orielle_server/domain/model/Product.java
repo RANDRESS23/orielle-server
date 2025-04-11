@@ -9,11 +9,11 @@ import static java.util.Objects.requireNonNull;
 
 public class Product {
     private final Long productId;
-    private final String name;
-    private final String description;
-    private final Long quantity;
-    private final BigDecimal price;
-    private final String image;
+    private String name;
+    private String description;
+    private Long quantity;
+    private BigDecimal price;
+    private String image;
     private Category category;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
@@ -120,6 +120,16 @@ public class Product {
     public LocalDateTime getCreatedAt() { return createdAt; }
 
     public LocalDateTime getUpdatedAt() { return updatedAt; }
+
+    public void setName(String name) { this.name = name; }
+
+    public void setDescription(String description) { this.description = description; }
+
+    public void setQuantity(Long quantity) { this.quantity = quantity; }
+
+    public void setPrice(BigDecimal price) { this.price = price; }
+
+    public void setImage(String image) { this.image = image; }
 
     public void setCategory(Category category) { this.category = category; }
 

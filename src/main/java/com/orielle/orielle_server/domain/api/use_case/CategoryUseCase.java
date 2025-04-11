@@ -49,6 +49,12 @@ public class CategoryUseCase implements ICategoryServicePort {
     }
 
     @Override
+    public Category getCategoryById(Long idCategory) {
+        return categoryPersistencePort.getCategoryById(idCategory)
+            .orElseThrow(() -> new NotFoundException(Constants.CATEGORY_NOT_FOUND));
+    }
+
+    @Override
     public CustomPage<Category> getAllCategories(Integer page, Integer size, Boolean ascending) {
         return categoryPersistencePort.getAllCategories(page, size, ascending);
     }

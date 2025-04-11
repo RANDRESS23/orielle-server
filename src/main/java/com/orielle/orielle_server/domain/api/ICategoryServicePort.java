@@ -9,6 +9,7 @@ public interface ICategoryServicePort {
     Category saveCategory(Category category);
     void deleteCategory(String name);
     Category getCategory(String name);
+    Category getCategoryById(Long idCategory);
     CustomPage<Category> getAllCategories(Integer page, Integer size, Boolean ascending);
     List<Category> getTotalCategories();
 }

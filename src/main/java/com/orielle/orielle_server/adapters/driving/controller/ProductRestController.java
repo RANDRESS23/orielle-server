@@ -6,7 +6,9 @@ import com.orielle.orielle_server.adapters.driving.dto.response.ProductResponse;
 import com.orielle.orielle_server.adapters.driving.mapper.request.IProductRequestMapper;
 import com.orielle.orielle_server.adapters.driving.mapper.response.IProductResponseMapper;
 import com.orielle.orielle_server.adapters.driving.util.DrivingConstants;
+import com.orielle.orielle_server.domain.api.ICategoryServicePort;
 import com.orielle.orielle_server.domain.api.IProductServicePort;
+import com.orielle.orielle_server.domain.model.Category;
 import com.orielle.orielle_server.domain.model.CustomPage;
 import com.orielle.orielle_server.domain.model.Product;
 import io.swagger.v3.oas.annotations.Operation;
@@ -20,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -28,6 +31,7 @@ import java.util.List;
 @Tag(name = DrivingConstants.TAG_PRODUCT_NAME, description = DrivingConstants.TAG_PRODUCT_DESCRIPTION)
 public class ProductRestController {
     private final IProductServicePort productServicePort;
+    private final ICategoryServicePort categoryServicePort;
     private final IProductRequestMapper productRequestMapper;
     private final IProductResponseMapper productResponseMapper;
 
@@ -132,5 +136,25 @@ public class ProductRestController {
         productServicePort.deleteProduct(name);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("/{productId}")
+    public ResponseEntity<ProductResponse> updateProduct(@Valid @RequestBody AddProductRequest request, @PathVariable String productId) {
+        Product product = IProductRequestMapper.addRequestToProduct(request);
+        Product productOld = productServicePort.getProductById(Long.valueOf(productId));
+        Category category = categoryServicePort.getCategoryById(product.getCategory().getCategoryId());
+
+        productOld.setName(product.getName());
+        productOld.setDescription(product.getDescription());
+        productOld.setQuantity(product.getQuantity());
+        productOld.setPrice(product.getPrice());
+        productOld.setImage(product.getImage());
+        productOld.setCategory(category);
+        productOld.setUpdatedAt(LocalDateTime.now());
+
+        Product productSaved = productServicePort.saveProduct(productOld);
+        ProductResponse response = productResponseMapper.toProductResponse(productSaved);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

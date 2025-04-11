@@ -19,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -97,5 +98,20 @@ public class CategoryRestController {
         categoryServicePort.deleteCategory(name);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("/{categoryId}")
+    public ResponseEntity<CategoryResponse> updateCategory(@Valid @RequestBody AddCategoryRequest request, @PathVariable String categoryId) {
+        Category category = categoryRequestMapper.addRequestToCategory(request);
+        Category categoryOld = categoryServicePort.getCategoryById(Long.valueOf(categoryId));
+
+        categoryOld.setName(category.getName());
+        categoryOld.setDescription(category.getDescription());
+        categoryOld.setUpdatedAt(LocalDateTime.now());
+
+        Category categorySaved = categoryServicePort.saveCategory(categoryOld);
+        CategoryResponse response = categoryResponseMapper.toCategoryResponse(categorySaved);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
